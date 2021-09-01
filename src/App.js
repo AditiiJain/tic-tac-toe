@@ -97,7 +97,11 @@ const App = () => {
             </div>
           ) : (
             <h1 className="text-center text-warning my-3">
-              {isCross ? "Cross" : "Circle"} Turns
+              {fieldArray.includes("empty")
+                ? isCross
+                  ? "Cross Turns"
+                  : "Circle Turns"
+                : "Match Draw!!"}
             </h1>
           )}
           <div className="grid">
