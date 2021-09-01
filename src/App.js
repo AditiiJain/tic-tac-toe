@@ -12,12 +12,13 @@ const fieldArray = new Array(9).fill("empty");
 const App = () => {
   const [isCross, setIsCross] = useState(false);
   const [winMessage, setWinMessage] = useState("");
-  console.log(setIsCross);
+  //reload the game
   const reloadGame = () => {
     setIsCross(false);
     setWinMessage("");
     fieldArray.fill("empty", 0, 9);
   };
+  //check for the winner
   const checkWinner = () => {
     if (
       fieldArray[0] === fieldArray[1] &&
@@ -69,47 +70,57 @@ const App = () => {
       setWinMessage(`${fieldArray[0]} won`);
     }
   };
+  //change the field
   const changeField = (fieldNumber) => {
     if (winMessage) {
       return toast(winMessage, { type: "success" });
     }
     if (fieldArray[fieldNumber] === "empty") {
       fieldArray[fieldNumber] = isCross ? "cross" : "circle";
-      setIsCross(!isCross);
+      setIsCross(!isCross); //toggling the turn
     } else {
-      return toast("Already Present", { type: "error" });
+      return toast("Already Marked", { type: "error" });
     }
     checkWinner();
   };
   return (
     <Container className="p-5">
       <h1 className="text-center display-1">Tic Tac Toe</h1>
-      <ToastContainer position="bottom-center" />
+      <ToastContainer position="top-right" />
       <Row>
         <Col md={6} className="offset-md-3">
           {winMessage ? (
-            <div className="my-2">
+            <div className="my-3">
               <h1 className="text-success text-uppercase text-center">
                 {winMessage}
               </h1>
-              <Button color="success" block onClick={reloadGame}>
-                Reload the Game
-              </Button>
             </div>
           ) : (
-            <h1 className="text-center text-warning">
-              {isCross ? "Cross" : "Circle"} turns
+            <h1 className="text-center text-warning my-3">
+              {isCross ? "Cross" : "Circle"} Turns
             </h1>
           )}
           <div className="grid">
             {fieldArray.map((item, index) => (
               <Card onClick={() => changeField(index)}>
                 {/* remember here the calling */}
+
                 <CardBody className={`box box-${index}`}>
                   <Icon name={item} className="icon" />
                 </CardBody>
               </Card>
             ))}
+          </div>
+          <div className="text-center mt-5 mb-2">
+            {winMessage ? (
+              <Button color="success" block onClick={reloadGame}>
+                Reload the Game
+              </Button>
+            ) : (
+              <Button color="warning" block onClick={reloadGame}>
+                Reload the Game
+              </Button>
+            )}
           </div>
         </Col>
       </Row>

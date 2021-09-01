@@ -1,11 +1,7 @@
-body {
-  /* background-color: #000000; */
-}
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  /* grid-gap: 15px; */
 }
 
 .box {
@@ -15,6 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   padding:50px;
+  cursor: pointer;
 }
 
 .box-0 {
@@ -49,7 +46,13 @@ body {
 
 .icons {
   font-size: 60px;
-  color: rgb(131, 12, 12);
+  color: rgb(29, 26, 26);
+}
+.cross{
+  color: red;
+}
+.circle{
+  color:purple;
 }
 .card{
   border:none;
