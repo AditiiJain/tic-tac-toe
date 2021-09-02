@@ -90,9 +90,13 @@ const Game = () => {
     checkWinner();
   };
   return (
-    <Container className="p-5" style={{backgroundColor:`${currentTheme.backgroundColor}`}}>
-      <h1 className="text-center display-1" style={{color:`${currentTheme.textColor}`}}>Tic Tac Toe</h1>
-      <ThemeToggler/>
+    <div style={{backgroundColor:`${currentTheme.backgroundColor}`}}>
+    <Container className="p-5" >
+      {/* <div style={{display:"flex"}}> */}
+      <ThemeToggler />
+      <h1 className="text-center display-1" style={{color:`${currentTheme.textColor}` }}>Tic Tac Toe</h1>
+     
+      {/* </div> */}
       <ToastContainer position="top-right" />
       <Row>
         <Col md={6} className="offset-md-3">
@@ -136,6 +140,7 @@ const Game = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 
